@@ -1,4 +1,6 @@
 # Write your code here!
+require "pry"
+
 def game_hash
   headhash = {
     :home => {
@@ -116,27 +118,28 @@ def game_hash
   }
 end
 
-def good_practices
-  game_hash.each do |location, team_data|
-    binding.pry
-    team_data.each do |attribute, data|
-      binding.pry
-      data.each do |data_item|
-        binding.pry
-      end
-    end
-  end
-end
+#def good_practices
+#  game_hash.each do |location, team_data|
+#    binding.pry
+#    team_data.each do |attribute, data|
+#      binding.pry
+#      data.each do |data_item|
+#        binding.pry
+#      end
+#    end
+#  end
+#end
 
 def num_points_scored(player_name)
 points_array = []
+#binding.pry
 game_hash.each do |location, team_data|
     team_data.each do |attribute, values|
         if attribute == :players
           values.each do |person, data|
-            data.each do |i, j|
-              if person == player_name && i == :points
-                points_array.push(j)
+            data.each do |data_points, data_values|
+              if person == player_name && data_points == :points
+                points_array.push(data_values)
               end
             end
           end
